@@ -14,7 +14,7 @@ const Home = () => {
             <BusinessSummary />
             <Reviews />
             <MainButton> Button </MainButton>
-
+            \
             <Footer />
         </div>
     );
