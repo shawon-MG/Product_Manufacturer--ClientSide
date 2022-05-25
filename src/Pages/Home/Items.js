@@ -17,7 +17,7 @@ const Items = () => {
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
 
                 {
-                    products.map((product) => <SingleItem
+                    products?.map((product) => <SingleItem
                         key={product._id}
                         product={product}
                     ></SingleItem>)
