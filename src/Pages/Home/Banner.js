@@ -12,17 +12,6 @@ const Banner = () => {
             <div class="carousel-item">
                 <img className='h-96' src="https://i.ibb.co/jvnBRjj/motorcycle-isolated-white-background-monochrome-style-1284-38724.webp" alt="Pizza" />
             </div>
-            {/* <div class="carousel-item">
-                <img className='h-96' src="https://i.ibb.co/sPRsxqL/illustration-motorcycle-red-color-1308-35859.webp" alt="Pizza" />
-            </div>
-
-            <div class="carousel-item">
-                <img className='h-96' src="https://i.ibb.co/sPRsxqL/illustration-motorcycle-red-color-1308-35859.webp" alt="Pizza" />
-            </div>
-
-            <div class="carousel-item">
-                <img className='h-96' src="https://i.ibb.co/sPRsxqL/illustration-motorcycle-red-color-1308-35859.webp" alt="Pizza" />
-            </div> */}
 
         </div>
     );
