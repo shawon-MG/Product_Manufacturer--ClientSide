@@ -9,6 +9,7 @@ import Header from './Pages/Shared/Header';
 import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
+import RequireAuth from './Pages/Login/RequireAuth';
 
 
 function App() {
@@ -22,8 +23,11 @@ function App() {
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/portfolio' element={<Portfolio />}></Route>
         <Route path='/contact' element={<Contact />}></Route>
-        <Route path='/dashboard' element={<Dashboard />}></Route>
         <Route path='/login' element={<Login />}></Route>
+
+        <Route element={<RequireAuth />}>
+          <Route path='/dashboard' element={<Dashboard />}> </Route>
+        </Route>
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
