@@ -43,7 +43,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl font-bold"> PC Builder BD </Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl font-bold">Bike Engine Manufacturing Ltd. </Link>
             </div>
 
             <div className="navbar-center hidden lg:flex">

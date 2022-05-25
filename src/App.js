@@ -8,11 +8,11 @@ import Portfolio from './Pages/Portfolio/Portfolio';
 import Header from './Pages/Shared/Header';
 import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
-import NotFound from './Pages/NotFound/NotFound';
+
 
 function App() {
   return (
-    <div className="App">
+    <div className='max-w-7xl mx-auto'>
       <Header />
       <Routes>
 
@@ -24,7 +24,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />}></Route>
         <Route path='/login' element={<Login />}></Route>
 
-        <Route path='*' element={<NotFound />}></Route>
+        {/* <Route path='*' element={<NotFound></NotFound>}></Route> */}
       </Routes>
 
     </div>
