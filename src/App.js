@@ -4,10 +4,10 @@ import About from './Pages/About/About';
 import Blogs from './Pages/Blogs/Blogs';
 import Contact from './Pages/Contact/Contact';
 import Dashboard from './Pages/Dashboard/Dashboard';
-import Banner from './Pages/Home/Banner';
 import Portfolio from './Pages/Portfolio/Portfolio';
 import Header from './Pages/Shared/Header';
 import Login from './Pages/Login/Login';
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Header />
       <Routes>
 
-        <Route path='/' element={<Banner />}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/portfolio' element={<Portfolio />}></Route>
