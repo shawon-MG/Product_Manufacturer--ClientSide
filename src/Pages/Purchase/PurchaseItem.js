@@ -30,6 +30,7 @@ const PurchaseProduct = () => {
         const userData = {
             userEmail: user.email,
             userName: user.displayName,
+            productName: name,
             inputFieldData: data
         }
         console.log(data, userData);
@@ -47,6 +48,14 @@ const PurchaseProduct = () => {
             })
         reset();
     };
+
+    // const [btnDisable, setBtnDisabled] = useState(true);
+    // const handleBtnDisabled = () => {
+    //     if (errors) {
+    //         setBtnDisabled(false);
+    //     }
+    // }
+
 
 
     return (
@@ -128,6 +137,7 @@ const PurchaseProduct = () => {
                                         <span className="label-text font-bold"> Your Order Quantity </span>
                                     </label>
                                     <input
+                                        // onBlur={handleBtnDisabled}
                                         type="number"
                                         placeholder="Order Quantity"
                                         className="input input-bordered w-full max-w-xs"
@@ -154,7 +164,7 @@ const PurchaseProduct = () => {
                                 </div>
 
                                 {/* {
-                                    minimumQuantity
+                                    btnDisable
                                         ? <input className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
                                         : <input disabled className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
                                 } */}
