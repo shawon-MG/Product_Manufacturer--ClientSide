@@ -3,6 +3,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
+import Loading from '../../Pages/Shared/Loading';
 
 const PurchaseProduct = () => {
 
@@ -23,7 +25,8 @@ const PurchaseProduct = () => {
 
 
     // Posting purchased information : 
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const navigate = useNavigate();
+    const { register, formState: { errors }, handleSubmit, reset, isLoading } = useForm();
     const onSubmit = data => {
         const userData = {
             userEmail: user.email,
@@ -44,14 +47,12 @@ const PurchaseProduct = () => {
                 console.log('result', result);
             })
         reset();
+        navigate('/dashboard');
     };
 
-    // const [btnDisable, setBtnDisabled] = useState(true);
-    // const handleBtnDisabled = () => {
-    //     if (errors) {
-    //         setBtnDisabled(false);
-    //     }
-    // }
+    if (isLoading) {
+        return <Loading />
+    }
     return (
 
         <div className='flex justify-center items-center mt-8'>
@@ -131,7 +132,6 @@ const PurchaseProduct = () => {
                                         <span className="label-text font-bold"> Your Order Quantity </span>
                                     </label>
                                     <input
-                                        // onBlur={handleBtnDisabled}
                                         type="number"
                                         placeholder="Order Quantity"
                                         className="input input-bordered w-full max-w-xs"
@@ -156,12 +156,6 @@ const PurchaseProduct = () => {
                                         {errors.order?.type === 'max' && <span className="label-text-alt text-red-500 font-bold">{errors.order.message}</span>}
                                     </label>
                                 </div>
-
-                                {/* {
-                                    btnDisable
-                                        ? <input className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
-                                        : <input disabled className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
-                                } */}
 
                                 <input className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
                             </form>
