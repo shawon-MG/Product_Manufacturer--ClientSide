@@ -3,7 +3,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
-import MainButton from '../Shared/MainButton';
 
 const PurchaseProduct = () => {
 
@@ -21,10 +20,31 @@ const PurchaseProduct = () => {
 
     const [user] = useAuthState(auth);
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+
+
+
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
+        const userData = {
+            userEmail: user.email,
+            userName: user.displayName,
+            inputFieldData: data
+        }
+        console.log(data, userData);
+
+        fetch('http://localhost:5000/purchase', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log('result', result);
+            })
+        reset();
     };
 
 
@@ -45,9 +65,6 @@ const PurchaseProduct = () => {
                             <h2 className='font-bold'> Minimum Quantity Have to Buy : {minimumQuantity}</h2>
                             <h2 className='font-bold'> Available Quantity Now : {availableQuantity}</h2>
                             <h2 className='font-bold'> Price Per Unit : {price}</h2>
-                            {/* <div class="card-actions justify-start">
-                                <MainButton> Purchase </MainButton>
-                            </div> */}
                         </div>
                     </div>
 
@@ -136,48 +153,10 @@ const PurchaseProduct = () => {
                                 </div>
 
 
-
-                                <input className="btn w-full max-w-xs" value="Login" type="submit" />
+                                <input className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
                             </form>
 
                         </div>
-                        {/* <div class="card-body">
-                            <div class="form-control">
-                                <h1>{name}</h1>
-                                <label class="label">
-                                    <span class="label-text"> Your Address </span>
-                                </label>
-                                <textarea class="textarea textarea-bordered" placeholder="address"></textarea>
-                            </div>
-
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text"> Your Phone Number </span>
-                                </label>
-                                <input type="number" placeholder="number" class="input input-bordered" />
-                            </div>
-
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text"> Order Quantity </span>
-                                </label>
-                                <input type="number" placeholder="number" class="input input-bordered" />
-                            </div>
-
-                            <div class="flex w-full">
-                                <div class="grid h-20 flex-grow card  rounded-box place-items-center">
-                                    <MainButton> Increase Order </MainButton>
-                                </div>
-                                <div class="divider divider-horizontal"> OR </div>
-                                <div class="grid h-20 flex-grow card  rounded-box place-items-center">
-                                    <MainButton> Decrease Order </MainButton>
-                                </div>
-                            </div>
-
-                            <div className='mx-auto'>
-                                <MainButton> Purchase </MainButton>
-                            </div>
-                        </div> */}
                     </div>
 
 
