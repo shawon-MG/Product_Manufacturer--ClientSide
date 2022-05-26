@@ -23,8 +23,6 @@ const PurchaseProduct = () => {
 
 
     // Posting purchased information : 
-
-
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         const userData = {
@@ -33,7 +31,6 @@ const PurchaseProduct = () => {
             productName: name,
             inputFieldData: data
         }
-        console.log(data, userData);
 
         fetch('http://localhost:5000/purchase', {
             method: 'POST',
@@ -55,9 +52,6 @@ const PurchaseProduct = () => {
     //         setBtnDisabled(false);
     //     }
     // }
-
-
-
     return (
 
         <div className='flex justify-center items-center mt-8'>

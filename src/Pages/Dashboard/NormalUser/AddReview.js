@@ -3,9 +3,23 @@ import { useForm } from "react-hook-form";
 
 
 const AddReview = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
     const onSubmit = data => {
         console.log(data);
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+
+        reset();
     };
 
     return (
@@ -24,20 +38,20 @@ const AddReview = () => {
                                 type="text"
                                 placeholder="Give your thought"
                                 className="input input-bordered w-full max-w-xs"
-                                {...register("review", {
+                                {...register("shortDescription", {
                                     required: {
                                         value: true,
                                         message: "Give some words. It's required"
                                     },
-                                    minLength: {
+                                    maxLength: {
                                         value: 250,
                                         message: 'You can not write more than that!'
                                     }
                                 })}
                             />
                             <label className="label">
-                                {errors.review?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors.review.message}</span>}
-                                {errors.review?.type === 'pattern' && <span className="label-text-alt text-red-500 font-bold">{errors.review.message}</span>}
+                                {errors.shortDescription?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors.shortDescription.message}</span>}
+                                {errors.shortDescription?.type === 'maxLength' && <span className="label-text-alt text-red-500 font-bold">{errors.shortDescription.message}</span>}
                             </label>
                         </div>
 

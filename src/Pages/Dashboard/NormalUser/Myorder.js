@@ -19,7 +19,7 @@ const Myorder = ({ myOrder }) => {
                     </div>
 
                     <div class="card-actions justify-center">
-                        <MainButton> Pay </MainButton>
+                        <MainButton> Pay your order </MainButton>
                     </div>
 
                 </div>
