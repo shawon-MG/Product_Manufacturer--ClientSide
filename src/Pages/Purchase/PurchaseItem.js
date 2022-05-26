@@ -6,10 +6,10 @@ import auth from '../../firebase.init';
 
 const PurchaseProduct = () => {
 
+    // Getting a specefic product information : 
     const { id } = useParams();
 
     const [singleItem, setSingleItem] = useState({})
-
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
@@ -22,9 +22,10 @@ const PurchaseProduct = () => {
 
 
 
+    // Posting purchased information : 
+
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
     const onSubmit = data => {
         const userData = {
             userEmail: user.email,
@@ -152,6 +153,11 @@ const PurchaseProduct = () => {
                                     </label>
                                 </div>
 
+                                {/* {
+                                    minimumQuantity
+                                        ? <input className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
+                                        : <input disabled className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
+                                } */}
 
                                 <input className="btn w-full max-w-xs  btn-primary font-bold text-black bg-gradient-to-r from-secondary to-primary" value="Purchase" type="submit" />
                             </form>
