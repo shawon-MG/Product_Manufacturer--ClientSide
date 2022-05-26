@@ -11,6 +11,8 @@ import Home from './Pages/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
 import RequireAuth from './Pages/Login/RequireAuth';
 import Signup from './Pages/Login/Signup';
+// import PurchaseProduct from './Pages/Purchase/PurchaseItem';
+import PurchaseItem from './Pages/Purchase/PurchaseItem';
 
 
 function App() {
@@ -29,7 +31,9 @@ function App() {
 
         <Route element={<RequireAuth />}>
           <Route path='/dashboard' element={<Dashboard />}> </Route>
+          <Route path='/purchase/:id' element={<PurchaseItem />}> </Route>
         </Route>
+
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
