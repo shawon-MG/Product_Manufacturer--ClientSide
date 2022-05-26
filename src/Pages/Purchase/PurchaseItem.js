@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import MainButton from '../Shared/MainButton';
@@ -20,6 +21,12 @@ const PurchaseProduct = () => {
 
     const [user] = useAuthState(auth);
 
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const onSubmit = data => {
+        console.log(data);
+    };
+
 
     return (
 
@@ -38,17 +45,105 @@ const PurchaseProduct = () => {
                             <h2 className='font-bold'> Minimum Quantity Have to Buy : {minimumQuantity}</h2>
                             <h2 className='font-bold'> Available Quantity Now : {availableQuantity}</h2>
                             <h2 className='font-bold'> Price Per Unit : {price}</h2>
-                            <div class="card-actions justify-start">
+                            {/* <div class="card-actions justify-start">
                                 <MainButton> Purchase </MainButton>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
 
                     {/* Input field for user address, phone number and increase/decrease order's quantity */}
                     <div class="card  w-full max-w-sm shadow-2xl bg-base-100 flex-1">
-                        <div class="card-body">
+                        <div className="card-body">
+                            <h2 className="text-center text-xl font-bold"> The product you choose : {name} </h2>
+
+                            <form onSubmit={handleSubmit(onSubmit)}>
+
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                        <span className="label-text font-bold"> Your Address </span>
+                                    </label>
+                                    <textarea
+                                        type="text"
+                                        placeholder="Address"
+                                        className="input input-bordered w-full max-w-xs"
+                                        {...register("address", {
+                                            required: {
+                                                value: true,
+                                                message: 'Address is Required'
+                                            }
+                                        })}
+                                    />
+                                    <label className="label">
+                                        {errors.address?.type === 'required' && <span className="label-text-alt text-red-500 font-bold"> {errors.address.message} </span>}
+                                    </label>
+                                </div>
+
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                        <span className="label-text font-bold"> Your Phone Number </span>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        placeholder="Phone"
+                                        className="input input-bordered w-full max-w-xs"
+                                        {...register("phone", {
+                                            required: {
+                                                value: true,
+                                                message: 'Phone Number is Required'
+                                            },
+                                            minLength: {
+                                                value: 9,
+                                                message: 'Don not give wrong number'
+                                            }
+                                        })}
+                                    />
+                                    <label className="label">
+                                        {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors.phone.message}</span>}
+                                        {errors.phone?.type === 'minLength' && <span className="label-text-alt text-red-500 font-bold">{errors.phone.message}</span>}
+                                    </label>
+                                </div>
+
+
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                        <span className="label-text font-bold"> Your Order Quantity </span>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        placeholder="Order Quantity"
+                                        className="input input-bordered w-full max-w-xs"
+                                        {...register("order", {
+                                            required: {
+                                                value: true,
+                                                message: 'Order Amount Is Required'
+                                            },
+                                            min: {
+                                                value: `${minimumQuantity}`,
+                                                message: `You Have to Buy More Than ${minimumQuantity}`
+                                            },
+                                            max: {
+                                                value: `${availableQuantity}`,
+                                                message: `You Can Buy ${availableQuantity} Pisces Only`
+                                            }
+                                        })}
+                                    />
+                                    <label className="label">
+                                        {errors.order?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors.order.message}</span>}
+                                        {errors.order?.type === 'min' && <span className="label-text-alt text-red-500 font-bold">{errors.order.message}</span>}
+                                        {errors.order?.type === 'max' && <span className="label-text-alt text-red-500 font-bold">{errors.order.message}</span>}
+                                    </label>
+                                </div>
+
+
+
+                                <input className="btn w-full max-w-xs" value="Login" type="submit" />
+                            </form>
+
+                        </div>
+                        {/* <div class="card-body">
                             <div class="form-control">
+                                <h1>{name}</h1>
                                 <label class="label">
                                     <span class="label-text"> Your Address </span>
                                 </label>
@@ -78,7 +173,11 @@ const PurchaseProduct = () => {
                                     <MainButton> Decrease Order </MainButton>
                                 </div>
                             </div>
-                        </div>
+
+                            <div className='mx-auto'>
+                                <MainButton> Purchase </MainButton>
+                            </div>
+                        </div> */}
                     </div>
 
 
