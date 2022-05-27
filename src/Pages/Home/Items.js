@@ -7,7 +7,11 @@ const Items = () => {
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(response => response.json())
-            .then(data => setProducts(data));
+            .then(data => {
+                setProducts(data);
+                console.log(data);
+
+            });
     }, []);
     return (
 

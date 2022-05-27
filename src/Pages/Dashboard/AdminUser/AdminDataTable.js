@@ -16,14 +16,12 @@ const AdminDataTable = ({ user, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                toast.success('Succesfully made an admin!')
+                toast.success('Successfully made an admin!')
                 refetch();
             })
     }
 
     return (
-
-
         <tr>
             <th>1</th>
             <td className='font-bold'> {email} </td>
@@ -38,10 +36,7 @@ const AdminDataTable = ({ user, refetch }) => {
                 <button class="btn btn-xs font-bold text-black bg-gradient-to-r from-secondary to-primary"> Remove </button>
             </td>
             <ToastContainer />
-
         </tr >
-
-
     );
 };
 
