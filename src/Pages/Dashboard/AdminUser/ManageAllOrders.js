@@ -2,10 +2,12 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../Shared/Loading';
 import MainButton from '../../Shared/MainButton';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 const ManageAllOrders = () => {
 
-    const { data: myOrders, isLoading } = useQuery('users', () => fetch('http://localhost:5000/purchase', {
+    const { data: myOrders, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/purchase', {
         method: 'GET'
     })
         .then(res => res.json())
@@ -13,6 +15,18 @@ const ManageAllOrders = () => {
 
     if (isLoading) {
         return <Loading />
+    }
+
+    const handleDelete = (id) => {
+        console.log(id);
+        fetch(`http://localhost:5000/purchase/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(data => {
+                toast.success('Successfully Deleted!')
+                refetch();
+            });
     }
 
     return (
@@ -35,13 +49,14 @@ const ManageAllOrders = () => {
                             </div>
 
                             <div class="card-actions justify-center">
-                                <MainButton > Cancel Item </MainButton>
+                                <MainButton onClick={() => handleDelete(order._id)} > Cancel Item </MainButton>
                             </div>
 
                         </div>
                     </div>)
                 }
             </div>
+            <ToastContainer />
         </div >
     );
 };

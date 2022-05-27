@@ -22,7 +22,7 @@ const Dashboard = () => {
             </div>
             <div class="drawer-side">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
-                <ul class="menu p-4 overflow-y-auto w-80 bg-gradient-to-r from-secondary to-primary rounded-xl text-base-content">
+                <ul class="menu p-4 overflow-y-auto w-80 bg-base-200 rounded-xl text-base-content">
 
                     {!admin && <li><Link className='font-bold my-1' to='/my-orders'> My Orders </Link></li>}
 
