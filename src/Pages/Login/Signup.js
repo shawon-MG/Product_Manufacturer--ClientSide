@@ -5,12 +5,15 @@ import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import { Link, useNavigate } from 'react-router-dom';
+import useToken from '../../hooks/useToken';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [
         createUserWithEmailAndPassword,
         user,
@@ -19,6 +22,9 @@ const Signup = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const [token] = useToken(googleUser || user);
+
     const navigate = useNavigate();
 
     if (loading || googleLoading || updating) {
@@ -30,19 +36,23 @@ const Signup = () => {
         signInErrorMessage = <p className='text-red-500 font-bold'> {error?.message || googleError?.message || updateError?.message} </p>
     };
 
-    if (googleUser || user) {
+    if (token) {
         console.log(googleUser || user);
+        navigate('/dashboard')
     };
 
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        alert('New Account Created');
-        navigate('/dashboard');
+        toast("New Account Has Been Created!");
+        reset();
+        // alert('New Account Created');
+        navigate('/');
     };
 
     return (
         <div className='flex h-screen justify-center items-center'>
+            <ToastContainer />
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-center text-xl font-bold"> Sign Up </h2>
