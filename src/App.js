@@ -16,6 +16,7 @@ import PurchaseItem from './Pages/Purchase/PurchaseItem';
 import MyOrders from './Pages/Dashboard/NormalUser/MyOrders';
 import AddReview from './Pages/Dashboard/NormalUser/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
+import PayOrder from './Pages/Dashboard/NormalUser/PayOrder';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route path='/dashboard' element={<Dashboard />}> </Route>
           <Route path='/purchase/:id' element={<PurchaseItem />}> </Route>
+          <Route path='/payment/:id' element={<PayOrder />}> </Route>
         </Route>
 
         <Route to='/dashboard' element={<Dashboard />}>

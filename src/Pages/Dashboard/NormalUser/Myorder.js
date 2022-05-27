@@ -8,8 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const Myorder = ({ myOrder }) => {
     const { _id, productName, userEmail, userName, inputFieldData, refetch } = myOrder;
 
-    const navigate = useNavigate();
-
     const handleCancel = (_id) => {
         fetch(`http://localhost:5000/purchase/${_id}`, {
             method: 'DELETE'
@@ -22,6 +20,12 @@ const Myorder = ({ myOrder }) => {
                 // console.log(data);
             })
     };
+
+    const navigate = useNavigate();
+
+    const handlePayment = (id) => {
+        navigate(`/payment/${id}`);
+    }
 
     return (
         <div>
@@ -41,7 +45,7 @@ const Myorder = ({ myOrder }) => {
                     </div>
 
                     <div class="card-actions justify-center">
-                        <MainButton> Pay your order </MainButton>
+                        <MainButton onClick={() => handlePayment(_id)} > Pay your order </MainButton>
                     </div>
 
                 </div>

@@ -5,19 +5,6 @@ import Loading from '../../Shared/Loading';
 
 const MyOrders = () => {
 
-    // const [deleteOrder, setDeleteOrder] = useState();
-
-
-    // const [myOrders, setMyOrders] = useState([]);
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/purchase')
-    //         .then((response) => response.json())
-    //         .then(data => {
-    //             setMyOrders(data);
-    //             console.log(data);
-    //         })
-    // }, [deleteOrder])
-    // console.log(deleteOrder);
     const { data: myOrders, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/purchase', {
         method: 'GET'
     })
