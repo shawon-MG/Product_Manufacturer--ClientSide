@@ -1,7 +1,8 @@
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
-const AdminDataTable = ({ user }) => {
-    const { email } = user;
+const AdminDataTable = ({ user, refetch }) => {
+    const { email, role } = user;
 
     const handleMakeAdmin = () => {
         console.log('clicked');
@@ -15,6 +16,8 @@ const AdminDataTable = ({ user }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                toast.success('Succesfully made an admin!')
+                refetch();
             })
     }
 
@@ -25,12 +28,18 @@ const AdminDataTable = ({ user }) => {
             <th>1</th>
             <td className='font-bold'> {email} </td>
             <td>
-                <button onClick={handleMakeAdmin} class="btn btn-xs font-bold text-black bg-gradient-to-r from-secondary to-primary"> Make Admin </button>
+                {
+                    role !== 'admin'
+                        ? <button onClick={handleMakeAdmin} class="btn btn-xs font-bold text-black bg-gradient-to-r from-secondary to-primary"> Make Admin </button>
+                        : <p className='font-bold text-red-600 '>  Already an admin </p>
+                }
             </td>
             <td>
                 <button class="btn btn-xs font-bold text-black bg-gradient-to-r from-secondary to-primary"> Remove </button>
             </td>
-        </tr>
+            <ToastContainer />
+
+        </tr >
 
 
     );

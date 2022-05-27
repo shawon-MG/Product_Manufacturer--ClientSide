@@ -44,15 +44,14 @@ const Signup = () => {
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        toast("New Account Has Been Created!");
-        reset();
+        // reset();
         // alert('New Account Created');
+        toast("New Account Has Been Created!");
         navigate('/');
     };
 
     return (
         <div className='flex h-screen justify-center items-center'>
-            <ToastContainer />
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-center text-xl font-bold"> Sign Up </h2>
@@ -143,6 +142,7 @@ const Signup = () => {
                     > CONTINUE WITH GOOGLE </button>
                 </div>
             </div >
+            <ToastContainer />
         </div >
     );
 };
