@@ -40,6 +40,7 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route path='/dashboard' element={<Dashboard />}> </Route>
           <Route path='/purchase/:id' element={<PurchaseItem />}> </Route>
+
           <Route path='/payment/:id' element={<PayOrder />}> </Route>
         </Route>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../Shared/Loading';
+import AdminDataTable from './AdminDataTable';
 
 const MakeAdmin = () => {
 
@@ -15,8 +16,29 @@ const MakeAdmin = () => {
     }
     return (
         <div>
-            <h1> Make an admin from here </h1>
-            <h1> All users length : {allUsers.length}</h1>
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>User</th>
+                            <th>Make Admin</th>
+                            <th>Remove User</th>
+                        </tr>
+                    </thead>
+                    <tbody className="">
+
+                        {
+                            allUsers.map(user => <AdminDataTable
+                                key={user._id}
+                                user={user}
+                                refetch={refetch}
+                            ></AdminDataTable>)
+                        }
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
