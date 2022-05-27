@@ -23,10 +23,10 @@ const AddProducts = () => {
     };
 
     return (
-        <div className='flex justify-center mt-12 '>
+        <div className='flex justify-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-xl font-bold"> Add A Review </h2>
+                    <h2 className="text-center text-xl font-bold"> Add A Product</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
 

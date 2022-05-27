@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -7,9 +7,12 @@ import auth from '../../firebase.init';
 
 const Header = () => {
 
+    const navigate = useNavigate();
+
     const [user] = useAuthState(auth);
     const logout = () => {
         signOut(auth);
+        navigate('/');
     };
 
     const menuItems = <>

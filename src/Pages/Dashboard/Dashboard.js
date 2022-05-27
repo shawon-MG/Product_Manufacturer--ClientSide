@@ -1,8 +1,13 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
+import auth from '../../firebase.init';
+import useAdmin from '../../hooks/useAdmin';
 
 const Dashboard = () => {
-
+    const [user] = useAuthState(auth);
+    console.log(user?.email);
+    const [admin] = useAdmin(user);
 
     return (
         <div class="drawer drawer-mobile">
@@ -18,18 +23,22 @@ const Dashboard = () => {
             <div class="drawer-side">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-80 bg-gradient-to-r from-secondary to-primary rounded-xl text-base-content">
-                    {/* <!-- Sidebar content here --> */}
-                    <li><Link className='font-bold my-1' to='/my-orders'> My Orders </Link></li>
-                    <li><Link className='font-bold my-1' to='/my-review'> Add A Review </Link></li>
+
+                    {!admin && <li><Link className='font-bold my-1' to='/my-orders'> My Orders </Link></li>}
+
+                    {!admin && <li><Link className='font-bold my-1' to='/my-review'> Add A Review </Link></li>}
+
                     <li><Link className='font-bold my-1' to='/my-profile'> My Profile </Link></li>
 
+                    {admin && <li><Link className='font-bold my-1' to='/admin/add-products'> Add Products </Link></li>}
 
-                    <li><Link className='font-bold my-1' to='/admin/add-products'> Add Products </Link></li>
-                    <li><Link className='font-bold my-1' to='/admin/manage-products'> Manage Products </Link></li>
-                    <li><Link className='font-bold my-1' to='/admin/manageAll-products'> Manage All Products </Link></li>
-                    <li><Link className='font-bold my-1' to='/admin/make-admin'> Make An Admin </Link></li>
+                    {admin && <li><Link className='font-bold my-1' to='/admin/manage-products'> Manage Products </Link></li>}
+
+                    {admin && <li><Link className='font-bold my-1' to='/admin/manageAll-products'> Manage All Orders </Link></li>}
+
+                    {admin && <li> <Link className='font-bold my-1' to='/admin/make-admin'> Make An Admin </Link></li>}
+
                 </ul>
-
             </div>
         </div>
     );
