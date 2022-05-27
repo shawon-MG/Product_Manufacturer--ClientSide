@@ -22,6 +22,12 @@ const Dashboard = () => {
                     <li><Link className='font-bold my-1' to='/my-orders'> My Orders </Link></li>
                     <li><Link className='font-bold my-1' to='/my-review'> Add A Review </Link></li>
                     <li><Link className='font-bold my-1' to='/my-profile'> My Profile </Link></li>
+
+
+                    <li><Link className='font-bold my-1' to='/admin/add-products'> Add Products </Link></li>
+                    <li><Link className='font-bold my-1' to='/admin/manage-products'> Manage Products </Link></li>
+                    <li><Link className='font-bold my-1' to='/admin/manageAll-products'> Manage All Products </Link></li>
+                    <li><Link className='font-bold my-1' to='/admin/make-admin'> Make An Admin </Link></li>
                 </ul>
 
             </div>
