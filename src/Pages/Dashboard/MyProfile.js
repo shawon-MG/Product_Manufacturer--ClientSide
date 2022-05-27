@@ -44,29 +44,29 @@ const MyProfile = () => {
             <ToastContainer />
             <div className='flex justify-center items-center mt-4'>
 
-                <div class="hero bg-base-200 rounded-xl p-2">
-                    <div class="hero-content grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div className="hero bg-base-200 rounded-xl p-2">
+                    <div className="hero-content grid grid-cols-1 lg:grid-cols-2 gap-16">
 
                         {/* --User's Information */}
-                        <div class="card  w-full max-w-sm shadow-2xl bg-base-100 flex-1">
-                            <div class="card-body">
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text"> You are logged in ! </span>
+                        <div className="card  w-full max-w-sm shadow-2xl bg-base-100 flex-1">
+                            <div className="card-body">
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text"> You are logged in ! </span>
                                     </label>
-                                    <input type="name" disabled value={user?.displayName} class="input input-bordered font-bold" />
+                                    <input type="name" disabled value={user?.displayName} className="input input-bordered font-bold" />
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text"> With this email address </span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text"> With this email address </span>
                                     </label>
-                                    <input type="email" disabled value={user?.email} class="input input-bordered font-bold" />
+                                    <input type="email" disabled value={user?.email} className="input input-bordered font-bold" />
                                 </div>
                             </div>
                         </div>
 
                         {/* ---form to add information about profile----  */}
-                        <div class="card w-full max-w-sm shadow-2xl bg-base-100 flex-1">
+                        <div className="card w-full max-w-sm shadow-2xl bg-base-100 flex-1">
                             <div className="card-body">
                                 <form onSubmit={handleSubmit(onSubmit)}>
 
