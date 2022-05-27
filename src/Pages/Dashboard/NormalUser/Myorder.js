@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import MainButton from '../../Shared/MainButton';
 import { useNavigate } from 'react-router-dom';
 

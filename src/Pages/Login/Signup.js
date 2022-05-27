@@ -6,14 +6,13 @@ import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import { Link, useNavigate } from 'react-router-dom';
 import useToken from '../../hooks/useToken';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const Signup = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
 
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         createUserWithEmailAndPassword,
         user,
@@ -44,9 +43,7 @@ const Signup = () => {
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        // reset();
-        // alert('New Account Created');
-        toast("New Account Has Been Created!");
+        alert('New Account Created');
         navigate('/');
     };
 
@@ -142,7 +139,6 @@ const Signup = () => {
                     > CONTINUE WITH GOOGLE </button>
                 </div>
             </div >
-            <ToastContainer />
         </div >
     );
 };

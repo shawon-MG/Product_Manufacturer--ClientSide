@@ -3,7 +3,7 @@ import React from 'react';
 const OurStory = () => {
     return (
         <div className='shadow-xl rounded-2xl'>
-            <h1 className='text-center text-2xl font-bold mt-16'>  Our Story </h1>
+            <h1 className='text-center text-2xl font-bold mt-16'>  Our Founder </h1>
 
             <div class="hero min-h-screen p-6">
 
