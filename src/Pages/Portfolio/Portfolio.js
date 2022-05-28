@@ -11,7 +11,7 @@ const Portfolio = () => {
 
                     <h1 className='text-2xl font-bold font-mono py-4'> You can contact with me at <span className=' bg-red-600 font-bold text-white p-2 rounded-xl'> shawonmg@gmail.com </span></h1>
 
-                    <h1 className='text-2xl font-bold font-mono py-4'> Fine year CSE student <span className=' bg-red-600 font-bold text-white p-2 rounded-xl'> National University BD </span></h1>
+                    <h1 className='text-2xl font-bold font-mono py-4'> Final year CSE student <span className=' bg-red-600 font-bold text-white p-2 rounded-xl'> National University BD </span></h1>
                     <div>
                         <h1 className='text-2xl font-bold font-mono pt-4'> List of technologies I know : </h1>
                         <ul class="steps steps-vertical">

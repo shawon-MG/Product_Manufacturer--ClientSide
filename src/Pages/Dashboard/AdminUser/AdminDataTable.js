@@ -7,7 +7,7 @@ const AdminDataTable = ({ user, refetch }) => {
     const handleMakeAdmin = () => {
         console.log('clicked');
 
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(`https://enigmatic-anchorage-70082.herokuapp.com/users/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

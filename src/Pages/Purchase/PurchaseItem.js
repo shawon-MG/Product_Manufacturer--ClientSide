@@ -13,7 +13,7 @@ const PurchaseProduct = () => {
 
     const [singleItem, setSingleItem] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://enigmatic-anchorage-70082.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setSingleItem(data))
     }, [singleItem]);
@@ -35,7 +35,7 @@ const PurchaseProduct = () => {
             inputFieldData: data
         }
 
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://enigmatic-anchorage-70082.herokuapp.com/purchase', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

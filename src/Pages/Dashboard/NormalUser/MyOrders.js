@@ -5,7 +5,7 @@ import Loading from '../../Shared/Loading';
 
 const MyOrders = () => {
 
-    const { data: myOrders, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/purchase', {
+    const { data: myOrders, isLoading, refetch } = useQuery('users', () => fetch('https://enigmatic-anchorage-70082.herokuapp.com/purchase', {
         method: 'GET'
     })
         .then(res => res.json())

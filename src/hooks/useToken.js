@@ -7,7 +7,7 @@ const useToken = (user) => {
         const email = user?.user?.email;
         const currentUser = { email: email };
         if (email) {
-            fetch(`http://localhost:5000/users/${email}`, {
+            fetch(`https://enigmatic-anchorage-70082.herokuapp.com/users/${email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

@@ -7,7 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const ManageAllOrders = () => {
 
-    const { data: myOrders, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/purchase', {
+    const { data: myOrders, isLoading, refetch } = useQuery('users', () => fetch('https://enigmatic-anchorage-70082.herokuapp.com/purchase', {
         method: 'GET'
     })
         .then(res => res.json())
@@ -19,7 +19,7 @@ const ManageAllOrders = () => {
 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/purchase/${id}`, {
+        fetch(`https://enigmatic-anchorage-70082.herokuapp.com/purchase/${id}`, {
             method: 'DELETE'
         })
             .then(response => response.json())

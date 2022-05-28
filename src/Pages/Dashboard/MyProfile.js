@@ -19,7 +19,7 @@ const MyProfile = () => {
             userName: user?.displayName,
             inputFieldData: data
         }
-        fetch('http://localhost:5000/profile-info', {
+        fetch('https://enigmatic-anchorage-70082.herokuapp.com/profile-info', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

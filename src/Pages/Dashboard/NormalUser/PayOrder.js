@@ -12,7 +12,7 @@ const PayOrder = () => {
     // const { _id, productName, userEmail, userName, inputFieldData } = myOrder;
     // console.log(myOrders);
 
-    const { data: myOrders, isLoading, } = useQuery('users', () => fetch(`http://localhost:5000/purchase/${id}`, {
+    const { data: myOrders, isLoading, } = useQuery('users', () => fetch(`https://enigmatic-anchorage-70082.herokuapp.com/purchase/${id}`, {
         method: 'GET'
     })
         .then(res => res.json())

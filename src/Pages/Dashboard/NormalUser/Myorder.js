@@ -9,7 +9,7 @@ const Myorder = ({ myOrder }) => {
     const { _id, productName, userEmail, userName, inputFieldData, refetch } = myOrder;
 
     const handleCancel = (_id) => {
-        fetch(`http://localhost:5000/purchase/${_id}`, {
+        fetch(`https://enigmatic-anchorage-70082.herokuapp.com/purchase/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

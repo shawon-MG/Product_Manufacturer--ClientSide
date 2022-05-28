@@ -5,7 +5,7 @@ const ManageProducts = () => {
 
     const [products, setProducts] = useState();
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://enigmatic-anchorage-70082.herokuapp.com/products')
             .then(response => response.json())
             .then(data => {
                 setProducts(data);
@@ -16,7 +16,7 @@ const ManageProducts = () => {
 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://enigmatic-anchorage-70082.herokuapp.com/products/${id}`, {
             method: 'DELETE'
         })
             .then(response => response.json())

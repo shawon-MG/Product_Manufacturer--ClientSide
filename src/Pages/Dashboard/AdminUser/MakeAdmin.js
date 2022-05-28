@@ -5,7 +5,7 @@ import AdminDataTable from './AdminDataTable';
 
 const MakeAdmin = () => {
 
-    const { data: allUsers, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/all-users', {
+    const { data: allUsers, isLoading, refetch } = useQuery('users', () => fetch('https://enigmatic-anchorage-70082.herokuapp.com/all-users', {
         method: 'GET'
     })
         .then(res => res.json())
