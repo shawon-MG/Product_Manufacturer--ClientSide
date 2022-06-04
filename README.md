@@ -8,8 +8,6 @@
 
 [Server Side Live Link](https://enigmatic-anchorage-70082.herokuapp.com/)
 
-#
-
 [Server Side Source Code ](https://github.com/shawon-MG/Product_Manufacturer--ServerSide)
 
 ### Key Features of This Site
