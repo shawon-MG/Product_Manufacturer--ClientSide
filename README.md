@@ -1,5 +1,7 @@
 # Bike Engine Manufacturing Ltd
 
+#### Admin Access: Mail-> admin@gmail.com Pass-> admin010203
+
 ### Client Side :
 
 [Client Side Live Link](https://final-project-79d7b.web.app/)
